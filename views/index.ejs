@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lyn</title>
+  <title>Lyn | <%= title %></title>
 <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
 </head>
 <body class="bg-gray-200">
+
 <nav class="w-full">
   <ul class="flex">
     <li class="px-4"><a href="/">Home</a></li>
@@ -22,5 +23,19 @@
   </ul>
 </nav>
   <h1 class="mt-4">Welcome</h1>
+
+  <div class="w-full mt-4 ">
+    <h1 class="mt-4 text-4xl font-extrabold">All blogs</h1>
+    <% if (blogs.length > 0) {%>
+        <% blogs.forEach(blog => { %>
+
+      <h3 class="mt-4 mb-4 text-2xl font-bold" ><%= blog.title%></h3>
+<p><%= blog.snippet%></p>
+
+        <% }) %>
+    <% } else {%>
+    <p>No Blogs</p>
+    <% }%>
+  </div>
 </body>
 </html>
