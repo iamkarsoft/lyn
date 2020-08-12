@@ -1,29 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Lyn | <%= title %></title>
-        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+<%- include('./partials/head.ejs') %>
+<%- include('./partials/nav.ejs') %>
 
-    </head>
-    <body class="bg-gray-200">
-    
-        <nav class="w-full">
-            <ul class="flex">
-                <li class="px-4">
-                    <a href="/">Home</a>
-                </li>
-                <li class="px-4">
-                    <a href="/about">About</a>
-                </li>
-
-                <li class="px-4">
-                    <a href="/blogs/create">New Blog</a>
-                </li>
-
-            </ul>
-        </nav>
         <h1 class="mt-4">Create Blog Post</h1>
 
         <div class="w-full md:w-2/3">
@@ -46,5 +23,5 @@
             </div>
           </form>
         </div>
-    </body>
-</html>
+<%- include('./partials/footer.ejs') %>
+
