@@ -1,5 +1,5 @@
 const express = require('express');
-
+const morgan = require('morgan');
 // express app
 const app = express();
 
@@ -10,10 +10,8 @@ app.set('view engine','ejs')
 
 app.listen(4500);
 
-app.use((req,res,next)=>{
-  console.log("our first middleware");
-  next();
-})
+//middleware
+app.use(morgan('dev'));
 
 //routes
 app.get('/',(req,res)=>{
