@@ -10,6 +10,10 @@ app.set('view engine','ejs')
 
 app.listen(4500);
 
+app.use((req,res,next)=>{
+  console.log("our first middleware");
+  next();
+})
 
 //routes
 app.get('/',(req,res)=>{
@@ -32,7 +36,7 @@ app.get('/blogs/create',(req,res)=>{
   res.render('create', {title: "blog"});
 })
 
-// 404 page
+// 404 page similar to middleware
 app.use((req,res)=>{
   res.status(404).render('404');
 
