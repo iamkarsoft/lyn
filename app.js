@@ -1,5 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
+
+const DBURI = mongodb+srv://kofiramos:<password>@lyn.4lpm6.mongodb.net/<dbname>?retryWrites=true&w=majority;
+
+
 // express app
 const app = express();
 
