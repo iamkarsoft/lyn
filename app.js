@@ -10,6 +10,9 @@ app.set('view engine','ejs')
 
 app.listen(4500);
 
+// middleware and assets
+app.use(express.static('public'))
+
 //middleware
 app.use(morgan('dev'));
 
