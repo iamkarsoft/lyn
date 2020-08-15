@@ -18,47 +18,18 @@ app.set('view engine','ejs')
 // middleware and assets
 app.use(express.static('public'))
 
+// middleware to handle form data
+app.use(express.urlencoded({extended: true}));
+
 //middleware
 app.use(morgan('dev'));
 
 //routes
 
 //connect to mongoose
-app.get('/add-blog',(req,res)=>{
-  const blog = new Blog({
-    title: 'new blog',
-    snippet: 'about my blog',
-    body: 'new more'
-  });
 
-  blog.save()
-  .then((result)=>{
-    res.send(result)
-  })
-  .catch((err)=>console.log(err));
-})
-// get all blogs
-app.get('/all-blogs',(req,res)=>{
-  Blog.find()
-  .then((result)=>{
-    res.send(result)
-  }).catch((err)=>console.log(err));
-})
-
-// find a single blog
-app.get('/single-blog',(req,res)=>{
-  Blog.findById('5f362b61bf7dcb2414c33a40')
-  .then((result)=>{res.send(result)})
-  .catch((err)=>console.log(err));
-})
 app.get('/',(req,res)=>{
-  const blogs = [
-    {title: 'Yoshi', snippet:'lorem10dfsfsdf fas'},
-    {title: 'Yoshdsfdfsfisf sdfsfsf', snippet:'lorem10dfsfsdf fsdfsfdsfs fsdfasfdsfsfas'},
-    {title: 'Yoshidfsf s', snippet:'lorem10dfsfsdf fsdfsdfsa fdfa fdasfsfas'},
-
-  ]
-  res.render('index',{title: 'Home',blogs})
+res.redirect('/blogs');
 })
 
 
@@ -67,8 +38,28 @@ app.get('/about',(req,res)=>{
 })
 
 // redirects
+//blogs
+
+app.get('/blogs',(req,res)=>{
+  Blog.find().sort({createdAt: -1})
+  .then((result)=>{
+    res.render('index',{title: 'All Blogs', blogs: result})
+  })
+  .catch((err)=>console.log(err))
+})
 app.get('/blogs/create',(req,res)=>{
   res.render('create', {title: "blog"});
+})
+
+//post request
+app.post('/blogs',(req,res)=>{
+  const blog = new Blog(req.body);
+  blog.save()
+  .then((result)=>{
+    res.redirect('/blogs');
+  }).catch((err)=>{
+    console.log(err)
+  })
 })
 
 // 404 page similar to middleware
