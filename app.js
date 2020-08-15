@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // db url
-const dbURI = `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_NAME}.4lpm6.mongodb.net/lyn?retryWrites=true&w=majority`;
+const dbURI = `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_NAME}.4lpm6.mongodb.net/${process.env.DATABASE_NAME}?retryWrites=true&w=majority`;
 
 
 
