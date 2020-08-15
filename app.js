@@ -2,8 +2,12 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogRoutes');
+// environmental variables
+const dotenv = require('dotenv');
+dotenv.config();
 
-const dbURI = 'mongodb+srv://kofiramos:hellofresh@lyn.4lpm6.mongodb.net/lyn?retryWrites=true&w=majority';
+// db url
+const dbURI = `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_NAME}.4lpm6.mongodb.net/lyn?retryWrites=true&w=majority`;
 
 
 
