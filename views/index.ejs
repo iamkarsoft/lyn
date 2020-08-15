@@ -7,8 +7,9 @@
     <h1 class="mt-4 text-4xl font-extrabold">All blogs</h1>
     <% if (blogs.length > 0) {%>
         <% blogs.forEach(blog => { %>
-
+      <a href="/blogs/<%=blog._id%>">
       <h3 class="mt-4 mb-4 text-2xl font-bold" ><%= blog.title%></h3>
+      </a>
 <p><%= blog.snippet%></p>
 
         <% }) %>
