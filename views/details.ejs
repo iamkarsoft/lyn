@@ -3,9 +3,9 @@
 <%- include('./partials/nav.ejs') %>
 
   <div class="w-full mt-4 ">
-   <h2><%- blog.title %></h2>
+   <h2><%= blog.title %></h2>
    <p>
-    <%- blog.body %>
+    <%= blog.body %>
    </p>
    <a href="" class="delete" data-doc="<%= blog._id%>">Delete</a>
 
@@ -20,13 +20,13 @@
         method: 'DELETE'
       })
       .then((response)=>{
-        responses.json()
+        response.json()
         .then((data)=>{
           window.location.href=data.redirect
         })
       })
       .catch((err)=>{
-        console.log(err));
+        console.log(err);
       })
     })
    </script>
